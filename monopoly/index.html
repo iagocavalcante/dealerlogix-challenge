@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Monopoly</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section class="game_board">
+    <div class="row">
+      <div class="cell square" id="square1">
+        <p id="square1-name" class="square-name">GO</p>
+        <p id="square1-residents"></p>
+      </div>
+      <div class="cell square" id="square2">
+        <p id="square2-name" class="square-name">Rent</p>
+        <p id="square2-residents"></p>
+      </div>
+      <div class="cell square" id="square3">
+        <p id="square3-name" class="square-name">Utility</p>
+        <p id="square3-residents"></p>
+      </div>
+      <div class="cell square" id="square4">
+        <p id="square4-name" class="square-name">Utility</p>
+        <p id="square4-residents"></p>
+      </div>
+      <div class="cell square" id="square5">
+        <p id="square5-name" class="square-name">Rent</p>
+        <p id="square5-residents"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell square" id="square16">
+        <p id="square16-name" class="square-name">Utility</p>
+        <p id="square16-residents"></p>
+      </div>
+      <div class="cell middle"></div>
+      <div class="cell middle"></div>
+      <div class="cell middle"></div>
+      <div class="cell square" id="square6">
+        <p id="square6-name" class="square-name">Utility</p>
+        <p id="square6-residents"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell square" id="square15">
+        <p id="square15-name" class="square-name">Rent</p>
+        <p id="square15-residents"></p>
+      </div>
+      <div class="cell middle"></div>
+      <div class="cell middle"></div>
+      <div class="cell middle"></div>
+      <div class="cell square" id="square7">
+        <p id="square7-name" class="square-name">Rent</p>
+        <p id="square7-residents"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell square" id="square14">
+        <p id="square14-name" class="square-name">Rent</p>
+        <p id="square14-residents"></p>
+      </div>
+      <div class="cell middle"></div>
+      <div class="cell middle"></div>
+      <div class="cell middle"></div>
+      <div class="cell square8" id="square8">
+        <p id="square8-name" class="square-name">Rent</p>
+        <p id="square8-residents"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell square" id="square13">
+        <p id="square13-name" class="square-name">Utility</p>
+        <p id="square13-residents"></p>
+      </div>
+      <div class="cell square" id="square12">
+        <p id="square12-name" class="square-name">Rent</p>
+        <p id="square12-residents"></p>
+      </div>
+      <div class="cell square" id="square11">
+        <p id="square11-name" class="square-name">Utility</p>
+        <p id="square11-residents"></p>
+      </div>
+      <div class="cell square" id="square10">
+        <p id="square10-name" class="square-name">Utility</p>
+        <p id="square10-residents"></p>
+      </div>
+      <div class="cell square" id="square9">
+        <p id="square9-name" class="square-name">Rent</p>
+        <p id="square9-residents"></p>
+      </div>
+    </div>
+    <h2>Players Info</h2>
+    <div class="info">
+      <div id="player1-info">
+        <p class="player">Player 1</p>
+        <p>Money: <b id="player1-money"></b></p>
+      </div>
+      <div id="player2-info">
+        <p class="player">Player 2</p>
+        <p>Money: <b id="player2-money"></b></p>
+      </div>
+      <div id="player3-info">
+        <p class="player">Player 3</p>
+        <p>Money: <b id="player3-money"></b></p>
+      </div>
+      <div id="player4-info">
+        <p class="player">Player 4</p>
+        <p>Money: <b id="player4-money"></b></p>
+      </div>
+    </div>
+
+    <div id="dice">
+      <button id="roll">Roll Dice</button>
+      <span>Value: <b id="value"></b></span>
+    </div>
+    
+    <div>
+      <h1>Turn</h1>
+      <span>Player: <b id="player-color"></b></span>
+    </div>
+
+  </section>
+</body>
+<script type="module">
+import Game from './js/game.js'
+
+const game = new Game();
+  
+const rollButton = document.getElementById("roll");
+
+game.populateBoard();
+</script>
+</html>
