@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <title>PhoneSpelling</title>
+</head>
+<body>
+  <div class="phone-keyboard">
+    <div class="row">
+      <button type="button" class="button  btn waves-effect" >
+        <p class="number">1</p>
+        <p calss="liter">_</p>
+      </button>
+      <button type="button" class="button  btn waves-effect" onclick="addNumber(2)"><p class="number">2</p><p calss="liter">ABC</p></button>
+      <button type="button" class="button  btn waves-effect" onclick="addNumber(3)"><p class="number">3</p><p calss="liter">DEF</p></button>
+    </div>
+    <div class="row">
+      <button type="button" class="button  btn waves-effect" onclick="addNumber(4)"><p class="number">4</p><p calss="liter">GHI</p></button>
+      <button type="button" class="button  btn waves-effect" onclick="addNumber(5)"><p class="number">5</p><p calss="liter">JKL</p></button>
+      <button type="button" class="button  btn waves-effect" onclick="addNumber(6)"><p class="number">6</p><p calss="liter">MNO</p></button>
+    </div>
+    <div class="row">  
+      <button type="button" class="button  btn waves-effect" onclick="addNumber(7)"><p class="number">7</p><p calss="liter">PQRS</p></button>
+      <button type="button" class="button  btn waves-effect" onclick="addNumber(8)"><p class="number">8</p><p calss="liter">TUV</p></button>
+      <button type="button" class="button  btn waves-effect" onclick="addNumber(9)"><p class="number">9</p><p calss="liter">WXYZ</p></button>
+    </div>
+    <div class="row">
+      <button type="button" class="button  btn waves-effect" ><p class="number">*</p><p calss="liter"></p></button>
+      <button type="button" class="button  btn waves-effect" ><p class="number">0</p><p calss="liter">+</p></button>
+      <button type="button" class="button  btn waves-effect" ><p class="number">#</p><p calss="liter"></p></button>
+    </div>
+  </div>
+
+  <div class="">
+    <pre id="numbers"></pre>
+    <button onclick="generateWord()">Generate Words</button>
+    <pre id="words"></pre>
+  </div>
+</body>
+<script type="module">
+  import PhoneSpelling from './js/phone-spelling.js';
+
+  const phoneSpelling = new PhoneSpelling();
+  const words = document.getElementById("words");
+  const numbers = document.getElementById("numbers");
+
+  let digits = [];
+  window.addNumber = (digit) => {
+    numbers.innerHTML = ''
+    digits = digits.concat(digit);
+    digits.forEach(digit => numbers.innerHTML += digit)
+  }
+
+  const generateWord = () => {
+    words.innerHTML = ''
+    const foundWords = phoneSpelling.generateWords(digits)
+    foundWords.forEach(word => {
+      words.innerHTML += `\n ${word}`  
+    });
+    digits = []
+  }
+
+  window.generateWord = generateWord
+</script>
+</html>

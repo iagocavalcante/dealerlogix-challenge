@@ -1,0 +1,57 @@
+.phone-keyboard {
+  max-width: 220px;
+  height: 1vh;
+  margin: 0 auto;
+}
+.phone-keyboard .row {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+.phone-keyboard .button {
+  display: block;
+  height: 65px;
+  width: 65px;
+  vertical-align: center;
+  border-radius: 100%;
+  border: 1px solid rgb(101, 159, 182);
+  margin: auto;
+  position: relative;
+  top: -50%;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
+  transition: all 0.3s;
+  font-size: 0.75em;
+  cursor: pointer;
+  /*     line-height: 0px; */
+  color: rgb(101, 159, 182);
+  font-weight: 300;
+  font-style: normal;
+  background-color: #f2f2f2;
+}
+.phone-keyboard .button > p {
+  line-height: 0;
+}
+.phone-keyboard .button:hover {
+  background: #d9d9d9;
+}
+.phone-keyboard .button:focus {
+  background: #d9d9d9;
+}
+.phone-keyboard .button-select {
+  background: #a6a6a6 !important;
+  color: white !important;
+}
+.phone-keyboard .number {
+  font-size: 2.1em;
+  line-height: 2.1em;
+  margin-top: 50%;
+}
+.phone-keyboard .liter {
+  margin: 0;
+}
+
+#words {
+  height: 300px;
+  overflow: auto;
+}
