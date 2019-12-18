@@ -3,33 +3,33 @@ import Player from './player.js'
 export default class Game {
   constructor () {
     this.squares = [
-      new Square("Rent", "square2"),
-      new Square("Rent", "square5"),
-      new Square("Rent", "square7"),
-      new Square("Rent", "square8"),
-      new Square("Rent", "square9"),
-      new Square("Rent", "square12"),
-      new Square("Rent", "square14"),
-      new Square("Rent", "square15"),
-      new Square("Utility", "square3"),
-      new Square("Utility", "square4"),
-      new Square("Utility", "square6"),
-      new Square("Utility", "square10"),
-      new Square("Utility", "square11"),
-      new Square("Utility", "square13"),
-      new Square("Utility", "square16")
+      new Square('Rent', 'square2'),
+      new Square('Rent', 'square5'),
+      new Square('Rent', 'square7'),
+      new Square('Rent', 'square8'),
+      new Square('Rent', 'square9'),
+      new Square('Rent', 'square12'),
+      new Square('Rent', 'square14'),
+      new Square('Rent', 'square15'),
+      new Square('Utility', 'square3'),
+      new Square('Utility', 'square4'),
+      new Square('Utility', 'square6'),
+      new Square('Utility', 'square10'),
+      new Square('Utility', 'square11'),
+      new Square('Utility', 'square13'),
+      new Square('Utility', 'square16')
     ];
 
     this.players = [
-      new Player("Player1", 500, "red", "player1"),
-      new Player("Player2", 500, "blue", "player2"),
-      new Player("Player3", 500, "green", "player3"),
-      new Player("Player4", 500, "purple", "player4")
+      new Player('Player1', 500, 'red', 'player1'),
+      new Player('Player2', 500, 'blue', 'player2'),
+      new Player('Player3', 500, 'green', 'player3'),
+      new Player('Player4', 500, 'purple', 'player4')
     ];
 
     this.diceValue = 0
     this.currentPlayer = 0
-    const button = document.getElementById("roll")
+    const button = document.getElementById('roll')
     button.onclick = this.takeTurn.bind(this)
   }
 
@@ -50,13 +50,15 @@ export default class Game {
       squareName.innerHTML = square.name;
     })
 
-    const square1 = document.getElementById("square1-residents");
+    const square1 = document.getElementById('square1-residents');
     
     this.players.forEach((player, index) => {
       const id = index + 1
       player.createPlayer(square1)
       this.updateByID(`player${id}-money`, player.money);
     })
+
+    this.updateByID('player-color', this.players[this.currentPlayer].color);
   }
 
   updateByID (id, msg) {
@@ -78,13 +80,11 @@ export default class Game {
       currentPlayer.updateMoney(currentPlayer.money);
     }
 
-    console.log('Next => ', nextSquare)
     currentPlayer.currentSquare = `square${nextSquare}`;
     
     const currentPlayerToken = document.getElementById(currentPlayer.id);
     currentPlayerToken.parentNode.removeChild(currentPlayerToken);
 
-    console.log('eita ', currentPlayer.currentSquare)
     const newSquare = document.getElementById(currentPlayer.currentSquare)
     currentPlayer.createPlayer(newSquare);
 
@@ -128,7 +128,7 @@ export default class Game {
   updateDiceValue () {
     this.diceValue = this.rollDice();
 
-    const dice = document.getElementById("value");
+    const dice = document.getElementById('value');
   
     dice.innerHTML = this.diceValue;
   }
@@ -137,12 +137,12 @@ export default class Game {
     this.movePlayer();
 
     if (this.players[this.currentPlayer].money < 0) {
-      alert("Sorry " + this.players[this.currentPlayer].name + ", you lose!");
+      alert(`Sorry ${this.players[this.currentPlayer].name}, you lose!`);
       this.players = this.players.filter(player => player.id != this.players[this.currentPlayer].id)
     }
 
     this.currentPlayer = this.nextPlayer(this.currentPlayer);
 
-    this.updateByID("player-color", this.players[this.currentPlayer].color);
+    this.updateByID('player-color', this.players[this.currentPlayer].color);
   }
 } 
